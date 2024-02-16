@@ -1,0 +1,64 @@
+<%- include("./partials/header.ejs") %>
+
+<div class="form-box">
+    <div class="form">
+
+        <h1>
+            <% const d = new Date() %>
+            <% let day = d.getDay() %>
+            <% let month = d.getMonth() %>
+            <% let monthDay = d.getDate() %>
+            <%= currentDay[day] %>, <%= currentMonth[month] %> <%= monthDay %>
+        </h1>
+    
+        
+        <form action="/" method="POST">
+            <div class="add-item">
+                <input type="text" class="toDoInput" name="toDoName" placeholder="New Item" autocomplete="off" required>
+                <input type="submit" class="submit-btn" value="+">
+            </div>
+        </form>
+
+        <% for (let i = 0 ; i < todayItems.length ; i++){ %>
+            <div class="list">
+                <ul>
+                    <li>
+                        <input type="checkbox" name="checkboxButton" id="checkbox">
+                        <p class="text"> <%= todayItems[i] %> </p> 
+                    </li>
+                </ul>
+            </div>
+        <% } %>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+            // Sayfa yüklendiğinde önceden işaretlenmiş öğeleri bulmak için bir dizi oluşturun
+            const checkedTodayItems = JSON.parse(localStorage.getItem('checkedTodayItems')) || [];
+    
+            // Önceden işaretlenmiş öğeleri kontrol edin ve işaretleyin
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(function(checkbox) {
+                if (checkedTodayItems.includes(checkbox.nextElementSibling.textContent.trim())) {
+                    checkbox.checked = true;
+                }
+            });
+    
+            // Checkbox durumlarını güncellemek için bir işlev tanımlayın
+            function updateCheckedItems() {
+                const checkedTodayItems = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(function(checkbox) {
+                    return checkbox.nextElementSibling.textContent.trim();
+                });
+                localStorage.setItem('checkedTodayItems', JSON.stringify(checkedTodayItems));
+            }
+    
+        // Checkbox değişikliklerini dinleyin ve durumları güncelleyin
+            checkboxes.forEach(function(checkbox) {
+                    checkbox.addEventListener('change', updateCheckedItems);
+                });
+            });
+        </script>
+
+    </div>
+</div>
+
+<%- include("./partials/footer.ejs") %>

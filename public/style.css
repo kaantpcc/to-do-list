@@ -1,0 +1,208 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    background-color: #DDDDDD;
+}
+
+.nav-bar{
+    padding: 50px 75px;
+}
+
+.nav-bar-elements{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 35px;
+    list-style-type: none;
+}
+
+.nav-bar-elements li a{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #222831;
+    font-size: 18px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all .3s ease-in-out 0s ;
+}
+
+.nav-bar-elements li a:hover{
+    color: #30475E;
+    text-decoration: underline;
+    scale: 1.1;
+}
+
+.form-box{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.form-box .form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 600px;
+    width: 500px;
+    border: 2px solid #30475E;
+    border-radius: 25px;
+    overflow-y: auto;
+}
+
+.form-box .form::-webkit-scrollbar{
+    width: 0;
+}
+
+.form-box .form h1{
+    color: #222831;
+    font-size: 30px;
+    margin: 25px auto 20px;
+    border-bottom: 2px solid #222831;
+}
+
+.form-box .form form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.form-box .form form .add-item{
+    width: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.form-box .form form .add-item .toDoInput{
+    width: 75%;
+    height: 50px;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.form-box .form form .add-item .submit-btn{
+    width: 20%;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #30475E;
+    cursor: pointer;
+}
+
+.form-box .form form .add-item .submit-btn:hover{
+    -webkit-box-shadow: 20px 10px 41px -12px rgba(0,0,0,0.75);
+    -moz-box-shadow: 20px 10px 41px -12px rgba(0,0,0,0.75);
+    box-shadow: 20px 10px 41px -12px rgba(0,0,0,0.75);
+}
+
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #222831;
+    margin-top: 5px;
+}
+
+.list{
+    background: #fff;
+    width: 75%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    height: 50px;
+    margin: 10px auto;
+    border-radius: 8px;
+}
+
+li{
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    background-color: #fff;
+}
+
+li input{
+    margin-right: 15px;
+}
+
+li p{
+    background-color: #fff;
+    color: #222831;
+}
+
+#checkbox:checked + p {
+    text-decoration:line-through;
+    opacity: .3;
+    font-style: italic;
+    font-weight: 700;
+}
+
+@media (max-width : 501px){
+
+    .nav-bar-elements{
+        justify-content: space-around;
+    }
+
+    .nav-bar {
+        padding: 40px 75px 30px;
+    }
+
+    .nav-bar-elements li a{
+        font-size: 12px;
+    }
+
+    .form-box .form{
+        width: 350px;
+        height: 450px;
+    }
+
+    .form-box .form h1 {
+        font-size: 24px;
+        margin-bottom: 0px;
+    }
+
+    .form-box .form form .add-item .toDoInput{
+        height: 40px;
+    }
+
+    .form-box .form form .add-item .submit-btn{
+        height: 40px;
+    }
+
+    .list{
+        height: 40px;
+        margin-bottom: 0;
+    }
+
+    footer{
+        font-size: 12px;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+

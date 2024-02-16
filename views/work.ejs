@@ -1,0 +1,61 @@
+<%- include("./partials/header.ejs") %>
+
+<div class="form-box">
+    <div class="form">
+
+        <h1>
+            Work
+        </h1>
+    
+        <form action="/work" method="POST">
+            <div class="add-item">
+                <input type="text" class="toDoInput" name="workName" placeholder="New Work Item" autocomplete="off" required>
+                <input type="submit" class="submit-btn" value="+">
+            </div>
+        </form>
+
+        <% for(let i = 0 ; i < workItems.length ; i++){ %>
+            <div class="list">
+                <ul>
+                    <li>
+                        <input type="checkbox" name="checkboxButton" id="checkbox">
+                        <p class="text"> <%= workItems[i] %> </p>
+                    </li>
+                </ul>
+            </div>
+        <% } %>
+
+        <script>
+
+            document.addEventListener("DOMContentLoaded", function() {
+            // Sayfa yüklendiğinde önceden işaretlenmiş öğeleri bulmak için bir dizi oluşturun
+            const checkedWorkItems = JSON.parse(localStorage.getItem('checkedWorkItems')) || [];
+    
+            // Önceden işaretlenmiş öğeleri kontrol edin ve işaretleyin
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(function(checkbox) {
+                if (checkedWorkItems.includes(checkbox.nextElementSibling.textContent.trim())) {
+                    checkbox.checked = true;
+                }
+            });
+    
+            // Checkbox durumlarını güncellemek için bir işlev tanımlayın
+            function updateCheckedItems() {
+                const checkedWorkItems = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(function(checkbox) {
+                    return checkbox.nextElementSibling.textContent.trim();
+                });
+                localStorage.setItem('checkedWorkItems', JSON.stringify(checkedWorkItems));
+            }
+    
+        // Checkbox değişikliklerini dinleyin ve durumları güncelleyin
+            checkboxes.forEach(function(checkbox) {
+                    checkbox.addEventListener('change', updateCheckedItems);
+                });
+            });
+        </script>
+
+    </div>
+
+</div>
+
+<%- include("./partials/footer.ejs") %>
