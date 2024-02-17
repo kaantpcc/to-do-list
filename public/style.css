@@ -179,6 +179,7 @@ li p{
 
     .form-box .form form .add-item .toDoInput{
         height: 40px;
+        font-size: 12px;
     }
 
     .form-box .form form .add-item .submit-btn{
@@ -191,6 +192,10 @@ li p{
     }
 
     footer{
+        font-size: 12px;
+    }
+
+    li p {
         font-size: 12px;
     }
 
